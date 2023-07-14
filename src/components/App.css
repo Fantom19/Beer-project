@@ -1,0 +1,69 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f9f9f9;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  padding: 8px; /* Уменьшение внутренних отступов */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card:hover {
+  background-color: #ddd;
+}
+
+.selected-recipe {
+  border-color: red;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 200px; /* Уменьшение максимальной высоты изображения */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.recipe-info {
+  display: flex;
+  margin-top: auto;
+  justify-content: space-between;
+  font-size: 14px; /* Уменьшение размера шрифта */
+}
