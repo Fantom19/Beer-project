@@ -12,7 +12,7 @@ const App = () => {
     deselectRecipe,
     deleteSelectedRecipes,
   } = useStore();
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
   const [visibleRecipes, setVisibleRecipes] = useState([]);
