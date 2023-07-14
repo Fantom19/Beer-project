@@ -103,55 +103,53 @@ const App = () => {
   }, [selectedRecipeId]);
 
   return (
-    <div
-      style={{ height: '100vh', overflow: 'auto' }}
-      ref={containerRef}
-      id="recipe-container"
-    >
-      <div className="app-header">
-        <span>Beer Recipe</span>
-        {selectedRecipes.size > 0 && selectedRecipeId === null && (
-          <button className="delete-button" onClick={handleDeleteClick}>
-            Delete
-          </button>
-        )}
-      </div>
-      {selectedRecipeId ? (
-        <RecipePage
-          recipeId={selectedRecipeId}
-          handleGoBack={() => setSelectedRecipeId(null)}
-        />
-      ) : (
-        <div className="card-container">
-          {visibleRecipes.map((recipe, index) => (
-            <div
-              key={`${recipe.id}-${index}`}
-              onClick={() => handleRecipeClick(recipe.id)}
-              onContextMenu={event => handleRecipeRightClick(event, recipe.id)}
-              className={`recipe-card ${
-                selectedRecipes.has(recipe.id) ? 'selected-recipe' : ''
-              }`}
-            >
-              <h3>{recipe.name}</h3>
-              <div className="image-container">
-                <img
-                  className="recipe-image"
-                  src={recipe.image_url}
-                  alt={recipe.name}
-                />
-              </div>
-              <p>{recipe.description}</p>
-              <div className="recipe-info">
-                <span>ABV: {recipe.abv}%</span>
-                <span>IBU: {recipe.ibu}</span>
-              </div>
-            </div>
-          ))}
+    <div className="app">
+      <div className="app-container" ref={containerRef} id="recipe-container">
+        <div className="app-header">
+          <span className="app-title">Beer Recipe</span>
+          {selectedRecipes.size > 0 && selectedRecipeId === null && (
+            <button className="delete-button" onClick={handleDeleteClick}>
+              Delete
+            </button>
+          )}
         </div>
-      )}
-      {isLoading && (
-        <div style={{ textAlign: 'center', marginTop: '16px' }}>Loading...</div>
-      )}
+        {selectedRecipeId ? (
+          <RecipePage
+            recipeId={selectedRecipeId}
+            handleGoBack={() => setSelectedRecipeId(null)}
+          />
+        ) : (
+          <div className="card-container">
+            {visibleRecipes.map((recipe, index) => (
+              <div
+                key={`${recipe.id}-${index}`}
+                onClick={() => handleRecipeClick(recipe.id)}
+                onContextMenu={event =>
+                  handleRecipeRightClick(event, recipe.id)
+                }
+                className={`recipe-card ${
+                  selectedRecipes.has(recipe.id) ? 'selected-recipe' : ''
+                }`}
+              >
+                <h3 className="recipe-name">{recipe.name}</h3>
+                <div className="image-container">
+                  <img
+                    className="recipe-image"
+                    src={recipe.image_url}
+                    alt={recipe.name}
+                  />
+                </div>
+                <p className="recipe-description">{recipe.description}</p>
+                <div className="recipe-info">
+                  <span className="recipe-abv">ABV: {recipe.abv}%</span>
+                  <span className="recipe-ibu">IBU: {recipe.ibu}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {isLoading && <div className="loading-text">Loading...</div>}
+      </div>
     </div>
   );
 };
